@@ -1,0 +1,7 @@
+chrooting broken lxc installation
+maybe specific to debian systemd
+
+CHROOTDIR=/var/lib/lxc/$GUESTNAME/rootfs
+mount --bind /dev/pts $CHROOTDIR/dev/pts
+chroot $CHROOTDIR /bin/bash
+mount -t proc proc proc
