@@ -12,10 +12,18 @@ LANG=en_US.UTF-8
 
 # update APT rootfs (Debian and Ubuntu)
 for DIST in $(find /var/cache/lxc/*/* -maxdepth 0 -type d|grep -v download); do
+  echo "========================================"
   date
   echo "Updating ${DIST} ..."
+  mkdir -p ${DIST}/dev/pts
+  mount --bind /dev/pts ${DIST}/dev/pts
+  mount -t proc proc ${DIST}/proc
+  mount -t sysfs sys ${DIST}/sys
   chroot "${DIST}" apt-get update -qq
   chroot "${DIST}" apt-get dist-upgrade -qq -y
   chroot "${DIST}" apt-get autoremove -qq -y
   chroot "${DIST}" apt-get clean
+  umount ${DIST}/dev/pts
+  umount ${DIST}/sys
+  umount ${DIST}/proc
 done
