@@ -19,8 +19,8 @@ for DIST in $(find /var/cache/lxc/*/* -maxdepth 0 -type d|grep -v download); do
   mount --bind /dev/pts ${DIST}/dev/pts
   mount -t proc proc ${DIST}/proc
   mount -t sysfs sys ${DIST}/sys
-  chroot "${DIST}" apt-get update -qq
-  chroot "${DIST}" apt-get dist-upgrade -qq -y
+  chroot "${DIST}" apt update -qq
+  chroot "${DIST}" apt full-upgrade -qq -y --no-install-recommends
   chroot "${DIST}" apt-get autoremove -qq -y
   chroot "${DIST}" apt-get clean
   umount ${DIST}/dev/pts
