@@ -1,2 +1,2 @@
 # admin-notes
-collection of howtos
+collection of howtos, scripts
