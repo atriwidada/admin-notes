@@ -1,5 +1,7 @@
 #!/bin/bash
 # update vagrant boxes
+# bug: error when no box installed
+#      'There ...'
 
 # handle multiple providers
 for b in `vagrant box list |grep -v ', 0)'|awk '{print $1i"_"$2}'|sed 's/(//'|sed 's/,//'|sort|uniq`
