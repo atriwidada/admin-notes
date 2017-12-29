@@ -1,0 +1,5 @@
+edit /etc/default/lxc-net
+fill in these variables:
+LXC_IPV6_ADDR="2002:x:y::z:1"
+LXC_IPV6_MASK="64"
+LXC_IPV6_NETWORK="2002:x:y::z:0"
