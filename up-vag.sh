@@ -17,7 +17,7 @@ done
 
 # remove old version of vagrant boxes
 TMPFILE=`tempfile`
-vagrant box list > $TMPFILE 
+vagrant box list | sort > $TMPFILE 
 first='1'
 while read -r vname vtype vver || [[ -n "$vver" ]]; do
     vtype=`echo $vtype | sed -e 's/[\(\),]//g'`
