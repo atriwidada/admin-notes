@@ -1,0 +1,17 @@
+mkdir netdata-deps
+cd netdata-deps
+curl -Ss 'https://raw.githubusercontent.com/atriwidada/netdata-demo-site/master/install-required-packages.sh' > kickstart.sh
+wget https://launchpad.net/ubuntu/+archive/primary/+files/libmnl0_1.0.1-1_i386.deb
+wget https://launchpad.net/ubuntu/+archive/primary/+files/libmnl-dev_1.0.1-1_i386.deb
+#
+# untuk 64-bit gunakan kedua file di bawah
+# https://launchpad.net/ubuntu/+archive/primary/+files/libmnl-dev_1.0.1-1_amd64.deb
+# https://launchpad.net/ubuntu/+archive/primary/+files/libmnl0_1.0.1-1_amd64.deb
+#
+sudo dpkg -i libmnl*.deb
+bash ./kickstart.sh -i netdata
+
+cd ..
+git clone https://github.com/firehol/netdata.git --depth=1
+cd netdata
+sudo ./netdata-installer.sh --libs-are-really-here
