@@ -18,8 +18,6 @@ touch $LOCKFILE
 LANG=en_US.UTF-8
 INTERACTIVE=n
 
-echo "\$1=$1"
-
 case "$1" in
   interactive)
 	  INTERACTIVE=y
