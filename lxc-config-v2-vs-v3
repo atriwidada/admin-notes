@@ -11,3 +11,8 @@ config syntax change
 * box name
 ** v2: lxc.utsname = {vmname}
 ** v3: lxc.uts.name = {vmname}
+* obsolete in v3
+** lxc.pivotdir
+** lxc.devttydir
+** lxc.tty
+** lxc.pts
