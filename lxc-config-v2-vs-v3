@@ -8,3 +8,6 @@ config syntax change
 * networking: v2 automatically assign ID, v3 need explicit ID
 ** v2: lxc.network.type = veth
 ** v3: lxc.net.0.type = veth
+* box name
+** v2: lxc.utsname = {vmname}
+** v3: lxc.uts.name = {vmname}
