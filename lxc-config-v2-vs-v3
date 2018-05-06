@@ -1,0 +1,10 @@
+upgrade LXC from v2 to v3
+
+config syntax change
+* rootfs: v2 need two entries (lxc.rootfs & lxc.rootfs.backend) merged into one in v3 (lxc.rootfs.path)
+** v2: lxc.rootfs = /var/lib/lxc/{vmname}/rootfs
+** v2: lxc.rootfs.backend = dir
+** v3: lxc.rootfs.path = dir:/var/lib/lxc/{vmname}/rootfs
+* networking: v2 automatically assign ID, v3 need explicit ID
+** v2: lxc.network.type = veth
+** v3: lxc.net.0.type = veth
