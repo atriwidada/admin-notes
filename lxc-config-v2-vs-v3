@@ -16,3 +16,4 @@ config syntax change
 ** lxc.devttydir
 ** lxc.tty
 ** lxc.pts
+** lxc.id_map # can't run unprivileged container without this
