@@ -4,7 +4,7 @@
 # bug: error when no box installed
 #      'There ...'
 
-DEBUG=1
+DEBUG=0
 
 # initial box list
 TMPBOXLISTINIT=$(mktemp)
