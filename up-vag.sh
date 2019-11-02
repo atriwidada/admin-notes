@@ -1,29 +1,26 @@
 #!/bin/bash
 # update vagrant boxes
 
-# bug: error when no box installed
-#      'There ...'
-
 DEBUG=1
 
 # initial box list
 TMPBOXLISTINIT=$(mktemp)
 vagrant box list | sort > $TMPBOXLISTINIT
-if [ .$DEBUG = '.1' ] then
+if [ .$DEBUG = .1 ]; then
 	echo "box list at start"
 	cat $TMPBOXLISTINIT
 fi
 
 # handle multiple providers
-if [ .$DEBUG = '.1' ] then
+if [ .$DEBUG = .1 ]; then
 	echo "trying to update boxes"
 fi
-for b in `cat $TMPBOXLISTINIT|grep -v ', 0)'|awk '{print $1i"_"$2}'|sed 's/(//'|sed 's/,//'|sort|uniq`
+for b in `cat $TMPBOXLISTINIT|grep -v ', 0)'|awk '{print $1i"#"$2}'|sed 's/(//'|sed 's/,//'|sort|uniq`
 do 
     date
     #echo "line=" $b
-    BOX=`echo $b|cut -f 1 -d '_'`
-    PROV=`echo $b|cut -f 2 -d '_'`
+    BOX=`echo $b|cut -f 1 -d '#'`
+    PROV=`echo $b|cut -f 2 -d '#'`
     echo $BOX $PROV
     vagrant box update --box $BOX --provider $PROV
 done
@@ -31,7 +28,7 @@ done
 # remove old version of vagrant boxes
 TMPFILE=$(mktemp)
 vagrant box list | sort > $TMPFILE 
-if [ .$DEBUG = '.1' ] then
+if [ .$DEBUG = .1 ]; then
 	echo "boxes list after update"
 	cat $TMPFILE
 fi
@@ -66,7 +63,7 @@ TMPBOXLISTFIN=$(mktemp)
 vagrant box list | sort > $TMPBOXLISTFIN
 
 # list changes
-if [ .$DEBUG = '.1' ] then
+if [ .$DEBUG = .1 ] ; then
 	echo "boxes list before update vs after old removal"
 	cat $TMPFILE
 	sdiff -s $TMPBOXLISTINIT $TMPBOXLISTFIN
