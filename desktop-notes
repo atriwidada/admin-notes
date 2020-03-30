@@ -1,0 +1,5 @@
+X error:
+  Failed to get GBM bo for flip to new front.
+
+solution:
+  https://dwaves.org/2019/08/14/debian-10-mate-gnome2-desktop-failed-to-get-gbm-bo-for-flip-to-new-front/
