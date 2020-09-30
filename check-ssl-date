@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]; then
+    echo "usage: $0 host"
+    exit 1
+fi
+
+openssl s_client -connect $1:443 | openssl x509 -noout -dates
+exit 0
