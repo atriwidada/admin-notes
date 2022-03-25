@@ -50,6 +50,7 @@ while read -r vname vtype vver || [[ -n "$vver" ]]; do
             vagrant box remove $pname --provider $ptype --box-version $pver 2>/dev/null
 	    ret=$?
 	    if [ .$ret != .0 ] ; then
+	    # TODO find who use this box
 		echo "removal failed, box is in use"
 	    else
 		echo "success"
