@@ -1,0 +1,3 @@
+#!/bin/sh
+
+nmap --script ssl-enum-ciphers -p 443 fqdn | tee ssl-enum.fqdn.log
