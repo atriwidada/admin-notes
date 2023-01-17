@@ -324,3 +324,10 @@ $ ipmitool -I lanplus -H {ip_address} -U {username} -a chassis power on
 ```
 $ ipmitool -H {ip_address} -U {username} -a sel list
 ```
+
+**turn on/off/on for N seconds locator LED**
+```
+$ ipmitool -H {ip_address} -U {username} -P {password} chassis identify force
+$ ipmitool -H {ip_address} -U {username} -P {password} chassis identify 0
+$ ipmitool -H {ip_address} -U {username} -P {password} chassis identify {N}
+```
