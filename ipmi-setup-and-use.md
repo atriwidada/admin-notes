@@ -1,6 +1,6 @@
 # query IPMI locally
 
-**check mc info**
+## check mc info
 ```
 # ipmitool mc info
 ```
@@ -30,7 +30,7 @@ Aux Firmware Rev Info     :
     0x1b
     0x41
 ```
-**check sensor**
+## check sensor
 ```
 # ipmitool sensor
 ```
@@ -54,7 +54,7 @@ Fan 2            | 0x0        | discrete   | 0x0180| na        | na        | na 
 Fan 3            | 0x0        | discrete   | 0x0180| na        | na        | na        | na        | na        | na        
 Front Panel      | 0x0        | discrete   | 0x0180| na        | na        | na        | na        | na        | na        
 ```
-**alt check sensor**
+## alt check sensor
 ```
 # ipmitool sdr
 ```
@@ -78,13 +78,13 @@ Fan 2            | 0x00              | ok
 Fan 3            | 0x00              | ok
 Front Panel      | 0x00              | ok
 ```
-**check status**
+## check status
 ```
 # ipmitool status | on | off | cycle | reset | diag | soft
 ```
 
 # IPMI remote access setup
-**check current IPMI LAN setup**
+## check current IPMI LAN setup
 ```
 # ipmitool lan print
 ```
@@ -122,13 +122,13 @@ Cipher Suite Priv Max   : uaaaaXXXXXXXXXX
 Bad Password Threshold  : Not Available
 ```
 
-**set IP address & netmask**
+## set IP address & netmask
 ```
 # ipmitool lan set 1 ipaddr 192.168.123.123
 # ipmitool lan set 1 netmask 255.255.255.0
 ```
 
-**setup userid & password**
+## setup userid & password
 ```
 # ipmitool user list 1
 ```
@@ -139,7 +139,7 @@ ID  Name	     Callin  Link Auth	IPMI Msg   Channel Priv Limit
 2   USERID           true    false      true       ADMINISTRATOR
 3                    true    false      false      NO ACCESS
 ```
-**create new userid, set password, and give access**
+## create new userid, set password, and give access
 ```
 # ipmitool user set name 1 <New User ID>
 # ipmitool user set password 1 <New Password>
@@ -158,20 +158,27 @@ Privilege Levels are:
 | 0xF | No Access |
 
 # remote access
-**turn on power**
+## turn on power
 ```
 $ ipmitool -H {ip_address} -U {username} -a chassis power on
 $ ipmitool -I lanplus -H {ip_address} -U {username} -a chassis power on
 ```
 
-**print system event log** 
+## print system event log
 ```
 $ ipmitool -H {ip_address} -U {username} -a sel list
 ```
 
-**turn on/off/on for N seconds locator LED**
+## turn on/off/on for N seconds locator LED
 ```
 $ ipmitool -H {ip_address} -U {username} -P {password} chassis identify force
 $ ipmitool -H {ip_address} -U {username} -P {password} chassis identify 0
 $ ipmitool -H {ip_address} -U {username} -P {password} chassis identify {N}
 ```
+# troubleshooting
+## verify kernel modules on server
+```
+$ lsmod grep -e 'ipmi_(devintf|si)'
+```
+## ping remote access IP address
+
