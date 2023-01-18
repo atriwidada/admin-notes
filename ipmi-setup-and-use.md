@@ -128,7 +128,7 @@ Bad Password Threshold  : Not Available
 # ipmitool lan set 1 netmask 255.255.255.0
 ```
 
-## setup userid & password
+## list existing userid
 ```
 # ipmitool user list 1
 ```
