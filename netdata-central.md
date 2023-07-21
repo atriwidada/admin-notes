@@ -67,7 +67,7 @@ setup ref: https://blog.netdata.cloud/why-is-data-replication-important/
     enabled = no
 [web]
     # disable local dashboard
-    bind to = lo
+    bind to = 127.0.0.1
 ```
 /etc/netdata/stream.conf
 ```
