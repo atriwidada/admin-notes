@@ -73,3 +73,5 @@ To disable specific VM:
 ```
 VBoxManage modifyvm {VMname or UUID} --autostart-enabled off
 ```
+
+These enable/disable command can not be executed for running VMs.
