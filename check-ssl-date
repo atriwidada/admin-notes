@@ -7,3 +7,6 @@ fi
 
 openssl s_client -connect $1:443 | openssl x509 -noout -dates
 exit 0
+
+# todo: generalize with parameterized port
+# openssl s_client -showcerts -connect mail.example.com:995 -servername mail.example.com
